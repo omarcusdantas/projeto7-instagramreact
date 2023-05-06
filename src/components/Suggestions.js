@@ -3,23 +3,28 @@ import Suggestion from "./Suggestion"
 const suggestionsList = [
     {
         image: "./assets/img/bad.vibes.memes.svg",
-        user: "bad.vibes.memes"
+        user: "bad.vibes.memes",
+        follow: true
     },
     {
         image: "./assets/img/chibirdart.svg",
-        user: "chibirdart"
+        user: "chibirdart",
+        follow: true
     },
     {
         image: "./assets/img/razoesparaacreditar.svg",
-        user: "razoesparaacreditar"
+        user: "razoesparaacreditar",
+        follow: false
     },
     {
         image: "./assets/img/adorable_animals.svg",
-        user: "adorable_animals"
+        user: "adorable_animals",
+        follow: true
     },
     {
         image: "./assets/img/smallcutecats.svg",
-        user: "smallcutecats"
+        user: "smallcutecats",
+        follow: true
     }
 ]
 
