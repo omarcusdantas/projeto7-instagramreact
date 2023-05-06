@@ -6,14 +6,14 @@ export default function User() {
 
     function changeProfilePic() {
         const newProfilePic = prompt("Novo foto de perfil");
-        if (newProfilePic !== "") {
+        if (newProfilePic !== "" && newProfilePic !== null) {
             setProfilePic(newProfilePic);
         }
     }
 
     function changeName() {
         const newName = prompt("Novo nome");
-        if (newName !== "") {
+        if (newName !== "" && newName !== null) {
             setName(newName);
         }
     }

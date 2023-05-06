@@ -1,11 +1,11 @@
-export default function Stories() {
+export default function Stories(props) {
     return (
         <div className="story">
             <div className="imagem">
-                <img src="./assets/img/9gag.svg" alt="9gag"/>
+                <img src={props.storyInfo.image} alt={props.storyInfo.user}/>
             </div>
             <div className="usuario">
-                9gag
+                {props.storyInfo.user}
             </div>
         </div>
     )

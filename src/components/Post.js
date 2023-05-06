@@ -1,8 +1,8 @@
 import React from "react"
 
-export default function Post() {
+export default function Post(props) {
     const [bookMark, setBookMark] = React.useState("bookmark-outline");
-    const [numberLikes, setNumberLikes] = React.useState(101523);
+    const [numberLikes, setNumberLikes] = React.useState(props.postInfo.likes);
     const [likeState, setLikeState] = React.useState({name: "heart-outline", class: ""});
 
     function toggleSave() {
@@ -34,8 +34,8 @@ export default function Post() {
         <div className="post">
             <div className="topo">
                 <div className="usuario">
-                    <img src="./assets/img/meowed.svg" alt="meowed"/>
-                    meowed
+                    <img src={props.postInfo.userImage} alt={props.postInfo.user}/>
+                    {props.postInfo.user}
                 </div>
                 <div className="acoes">
                     <ion-icon name="ellipsis-horizontal"></ion-icon>
@@ -43,7 +43,7 @@ export default function Post() {
             </div>
 
             <div className="conteudo">
-                <img src="./assets/img/gato-telefone.svg" alt="gato-telefone" onClick={clickLike}/>
+                <img src={props.postInfo.content} alt={props.postInfo.alt} onClick={clickLike}/>
             </div>
 
             <div className="fundo">
@@ -59,9 +59,9 @@ export default function Post() {
                 </div>
 
                 <div className="curtidas">
-                    <img src="./assets/img/respondeai.svg" alt="respondeai"/>
+                    <img src={props.postInfo.lastLikeUserImage} alt={props.postInfo.lastLike}/>
                     <div className="texto">
-                        Curtido por <strong>respondeai</strong> e <strong>outras {numberLikes} pessoas</strong>
+                        Curtido por <strong>{props.postInfo.lastLike}</strong> e <strong>outras {numberLikes} pessoas</strong>
                     </div>
                 </div>
             </div>
