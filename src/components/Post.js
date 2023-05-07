@@ -3,7 +3,7 @@ import React from "react"
 export default function Post(props) {
     const [bookMark, setBookMark] = React.useState("bookmark-outline");
     const [numberLikes, setNumberLikes] = React.useState(props.postInfo.likes);
-    const [likeState, setLikeState] = React.useState({name: "heart-outline", class: ""});
+    const [likeState, setLikeState] = React.useState({name: "heart-outline", red: false, animation: false});
 
     function toggleSave() {
         if (bookMark === "bookmark") {
@@ -15,18 +15,19 @@ export default function Post(props) {
 
     function clickLike() {
         if (likeState.name !== "heart") {
-            setLikeState({name: "heart", red: "red-heart"});
+            setLikeState({name: "heart", red: true, animation: true});
             setNumberLikes(numberLikes+1);
+            setTimeout(() => setLikeState({name: "heart", red: true, animation: false}),500)
         }
     }
 
     function toggleLike() {
         if (likeState.name === "heart") {
-            setLikeState({name: "heart-outline", red: ""})
+            setLikeState({name: "heart-outline", red: false})
             setNumberLikes(numberLikes-1);
             return;
         }
-        setLikeState({name: "heart", red: "red-heart"});
+        setLikeState({name: "heart", red: true});
         setNumberLikes(numberLikes+1);
     }
 
@@ -43,13 +44,14 @@ export default function Post(props) {
             </div>
 
             <div className="conteudo">
-                <img src={props.postInfo.content} alt={props.postInfo.alt} onClick={clickLike} data-test="post-image"/>
+                <img src={props.postInfo.content} alt={props.postInfo.alt} onDoubleClick={clickLike} data-test="post-image"/>
+                {likeState.animation && <ion-icon name="heart" class="heart-animation"></ion-icon>}
             </div>
 
             <div className="fundo">
                 <div className="acoes">
                     <div>
-                        <ion-icon name={likeState.name} class={likeState.red} onClick={toggleLike} data-test="like-post"></ion-icon>
+                        <ion-icon name={likeState.name} class={likeState.red ? "red-heart" : ""} onClick={toggleLike} data-test="like-post"></ion-icon>
                         <ion-icon name="chatbubble-outline"></ion-icon>
                         <ion-icon name="paper-plane-outline"></ion-icon>
                     </div>
